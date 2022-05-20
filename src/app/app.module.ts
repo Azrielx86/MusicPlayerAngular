@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AudioService } from './AudioService.service';
 import { IpcService } from './ipcRender.service';
 
 @NgModule({
@@ -13,7 +14,7 @@ import { IpcService } from './ipcRender.service';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [IpcService],
+  providers: [IpcService, AudioService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,11 +1,7 @@
 <div>
-  <!-- <input type="file" id="dir-input" title="dir"> -->
-  <!-- <button title="test" type="button" (click)="ping()">Ping!</button> -->
-
   <button type="button" id="dir-button" (click)="openFileDialog()">Open</button>
-  <!-- <div>{{ response }}</div> -->
+  <p>{{ tmpInfo }}</p>
   <div *ngFor="let val of response">
-    <!-- <a [href]="val.fullpath"> -->
     <a href="#" (click)="tmpPlayAudio(val.fullpath)">
       {{ val.name }}
     </a>

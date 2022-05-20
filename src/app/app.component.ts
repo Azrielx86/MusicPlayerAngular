@@ -1,4 +1,5 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
+import { AudioService } from './AudioService.service';
 import { IpcService } from './ipcRender.service';
 
 @Component({
@@ -9,10 +10,13 @@ import { IpcService } from './ipcRender.service';
 export class AppComponent {
   response: any[] = [];
   path: string = '';
+  // TODO: Remove
+  tmpInfo: string = '';
 
   constructor(
     private ipcService: IpcService,
-    private cdRef: ChangeDetectorRef
+    private cdRef: ChangeDetectorRef,
+    private audioService: AudioService
   ) {}
 
   openFileDialog = () => {
@@ -24,17 +28,10 @@ export class AppComponent {
     });
   };
 
-  ping = () => {
-    this.ipcService.send('message', 'ping');
-    this.ipcService.on('reply', (event: any, arg: []) => {
-      console.log('En respuesta');
-      this.response = arg;
-      this.cdRef.detectChanges();
-    });
-  };
-
+  // TODO: Remove
   tmpPlayAudio = (path: string) => {
-    let audio = new Audio(path);
-    audio.play();
+    this.tmpInfo = `Playing: ${path}`;
+    this.audioService.openAudio(path);
+    this.audioService.playAudio();
   };
 }

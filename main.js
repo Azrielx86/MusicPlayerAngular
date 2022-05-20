@@ -26,11 +26,35 @@ createWindow = () => {
   });
 };
 
-readDir = (path) => {
+/**
+ * @param {string} path
+ * @returns {fs.Dirent[]}
+ */
+const getAllFiles = (path) => {
+  const filesArray = [];
+
   let files = fs.readdirSync(path, {
     withFileTypes: true,
   });
-  return files;
+
+  for (const value of files) {
+    if (value.isDirectory()) {
+      getAllFiles(`${path}/${value.name}`).forEach((element) => {
+        filesArray.push(element);
+      });
+    } else {
+      if (value.name.match(/\b(\.mp3)|(\.flac)\b/i)) {
+        value.fullpath = `${path}/${value.name}`;
+        filesArray.push(value);
+      }
+    }
+  }
+
+  for (const [i, value] of filesArray.entries()) {
+    value.index = i;
+  }
+
+  return filesArray;
 };
 
 app.on("ready", createWindow);
@@ -50,20 +74,7 @@ ipcMain.on("open-file-dialog-for-file", async (event) => {
     properties: ["openDirectory"],
   });
 
-  // let files = fs.readdirSync(dir["filePaths"][0], {
-  //   withFileTypes: true,
-  // });
+  filesArray = getAllFiles(dir["filePaths"][0]);
 
-  let files = readDir(dir["filePaths"][0]);
-
-  for (const value of files) {
-    // Todo: remove
-    // if (value.isDirectory())
-    //   console.log(`${dir["filePaths"][0]}/${value.name} Es directorio`);
-    // else if (value.isFile())
-    //   console.log(`${dir["filePaths"][0]}/${value.name} Es archivo`);
-    value.fullpath = `${dir["filePaths"][0]}/${value.name}`;
-  }
-
-  if (dir) event.reply("selected-file", files);
+  if (dir) event.reply("selected-file", filesArray);
 });
