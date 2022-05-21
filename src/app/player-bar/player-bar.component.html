@@ -1,0 +1,22 @@
+<div class="controls-container">
+  <div>
+    <button>Prev</button>
+    <button (click)="playPauseAudio()">Play</button>
+    <button>Next</button>
+  </div>
+  <input
+    type="range"
+    class="progressbar"
+    id="progress-bar"
+    title="Progress Bar"
+    [(ngModel)]="progressBar"
+    (input)="changeAudioTime()"
+  />
+  <input
+    type="range"
+    id="volume-bar"
+    title="Volume Bar"
+    [(ngModel)]="volume"
+    (input)="changeVolume()"
+  />
+</div>

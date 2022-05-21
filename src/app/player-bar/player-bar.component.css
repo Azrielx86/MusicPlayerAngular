@@ -1,0 +1,12 @@
+input.progressbar[type="range"]{
+    width: 500px;
+}
+
+.controls-container{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin: 5px;
+    padding: 5px;
+    background-color: aliceblue;
+}

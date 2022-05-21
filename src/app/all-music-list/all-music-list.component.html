@@ -1,0 +1,12 @@
+<div>
+  <button type="button" id="dir-button" (click)="openFileDialog()">Open</button>
+  <div *ngFor="let val of response">
+    <button type="button" (click)="tmpPlayAudio(val.fullpath)">
+      <!-- {{ val.name }} -->
+      <img [src]="val.coverURL" alt="album" width="50px" height="50px" />
+      <p>{{ val.meta.common.title }}</p>
+      <p>{{ val.meta.common.artist }}</p>
+    </button>
+    <hr />
+  </div>
+</div>
