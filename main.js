@@ -1,5 +1,6 @@
 const { app, ipcMain, BrowserWindow, dialog } = require("electron");
 const fs = require("fs");
+const mm = require("music-metadata");
 
 let appWin;
 
@@ -74,7 +75,19 @@ ipcMain.on("open-file-dialog-for-file", async (event) => {
     properties: ["openDirectory"],
   });
 
-  filesArray = getAllFiles(dir["filePaths"][0]);
+  const filesArray = getAllFiles(dir["filePaths"][0]);
+
+  for (const value of filesArray) {
+    await mm.parseFile(value.fullpath).then((meta) => {
+      value.meta = meta;
+      value.cover = mm.selectCover(meta.common.picture);
+      if (value.cover)
+        value.coverURL = `data:${value.cover.format};base64,${value.cover.data.toString("base64")}`;
+      else value.coverURL = " ";
+    });
+  }
+
+  // console.log(filesArray[0].cover.data.toString('base64'));
 
   if (dir) event.reply("selected-file", filesArray);
 });

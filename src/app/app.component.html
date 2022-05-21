@@ -2,8 +2,13 @@
   <button type="button" id="dir-button" (click)="openFileDialog()">Open</button>
   <p>{{ tmpInfo }}</p>
   <div *ngFor="let val of response">
-    <a href="#" (click)="tmpPlayAudio(val.fullpath)">
+    <img [src]="val.coverURL" alt="album" width="50px" height="50px" />
+    <button type="button" (click)="tmpPlayAudio(val.fullpath)">
       {{ val.name }}
-    </a>
+    </button>
+    <p>{{ val.meta.common.title }}</p>
+    <p>{{ val.meta.common.artist }}</p>
+    <hr />
+    <!-- src="data:{{ val.cover.format }};base64,{{val.cover.data.toString('base64')}}" -->
   </div>
 </div>
