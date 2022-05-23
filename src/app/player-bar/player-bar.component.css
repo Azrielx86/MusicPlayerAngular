@@ -1,12 +1,23 @@
-input.progressbar[type="range"]{
-    width: 500px;
+div.controls-container {
+  @apply flex flex-col;
 }
 
-.controls-container{
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    margin: 5px;
-    padding: 5px;
-    background-color: aliceblue;
+div.button-container {
+  @apply flex flex-row space-x-4;
+}
+
+div.controls-sub {
+  @apply flex flex-row min-w-full space-x-8;
+}
+
+input.progressbar[type="range"] {
+  @apply grow w-full;
+}
+
+input.volumebar[type="range"] {
+  @apply grow w-1/6;
+}
+
+div.controls-container {
+  @apply fixed bottom-0 w-full m-1 p-1 bg-slate-200 items-center content-center text-center;
 }

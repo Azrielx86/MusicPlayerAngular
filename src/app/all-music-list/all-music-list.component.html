@@ -1,12 +1,27 @@
-<div>
+<div class="container flex flex-col">
   <button type="button" id="dir-button" (click)="openFileDialog()">Open</button>
-  <div *ngFor="let val of response">
-    <button type="button" (click)="tmpPlayAudio(val.fullpath)">
-      <!-- {{ val.name }} -->
-      <img [src]="val.coverURL" alt="album" width="50px" height="50px" />
-      <p>{{ val.meta.common.title }}</p>
-      <p>{{ val.meta.common.artist }}</p>
-    </button>
-    <hr />
+  <div class="song-list-container">
+    <!-- Lista -->
+    <div *ngFor="let val of response" class="song-tile">
+      <button type="button" (click)="tmpPlayAudio(val.fullpath)">
+        <!-- Tile principal -->
+        <div class="song-tile-in">
+          <!-- Cover -->
+          <div class="song-cover">
+            <img [src]="val.coverURL" alt="album" />
+          </div>
+          <!-- info -->
+          <div class="song-info">
+            <div>
+              <p class="song-title">{{ val.meta.common.title }}</p>
+              <p class="song-artist">{{ val.meta.common.artist }}</p>
+            </div>
+            <div>
+              <p>{{ val.meta.format.duration * 1000 | date: "mm:ss" }}</p>
+            </div>
+          </div>
+        </div>
+      </button>
+    </div>
   </div>
 </div>

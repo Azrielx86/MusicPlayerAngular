@@ -1,0 +1,36 @@
+div.song-list-container {
+  @apply flex flex-col;
+}
+
+div.song-tile {
+  @apply w-full;
+}
+
+div.song-tile button {
+  @apply w-full;
+}
+
+div.song-tile-in {
+  @apply flex flex-row bg-slate-300 p-1 m-1 rounded-md items-center;
+}
+
+/* TODO: Square img only */
+div.song-cover img {
+  @apply w-12 rounded-md;
+}
+
+div.song-info {
+  @apply flex flex-row basis-full p-2;
+}
+
+div.song-info div:first-child {
+  @apply grow text-left;
+}
+
+p.song-title {
+  @apply text-lg font-bold;
+}
+
+p.song-artist {
+  @apply text-base;
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AudioService } from '../AudioService.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { AudioService } from '../AudioService.service';
   templateUrl: './player-bar.component.html',
   styleUrls: ['./player-bar.component.css'],
 })
-export class PlayerBarComponent implements OnInit {
+export class PlayerBarComponent implements OnInit, OnDestroy {
   progressBar: number = 0;
   // TODO: get from save file
   volume: number = 100;
@@ -17,8 +17,12 @@ export class PlayerBarComponent implements OnInit {
   ngOnInit(): void {
     this.updateEventsInterval = setInterval(() => {
       this.updateEvents();
-      console.log(this.progressBar);
+      // console.log(this.progressBar);
     }, 100);
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.updateEventsInterval);
   }
 
   changeVolume = () => {

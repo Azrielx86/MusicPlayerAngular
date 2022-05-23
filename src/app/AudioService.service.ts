@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 export class AudioService {
   audio: HTMLAudioElement | null = null;
   playing: boolean = false;
-  intervalPlayer: any;
+  // intervalPlayer: any;
 
   constructor() {}
 
