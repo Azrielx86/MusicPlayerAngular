@@ -1,0 +1,7 @@
+div.menu-container {
+  @apply flex flex-col;
+}
+
+div.menu-container > button {
+  @apply m-1 bg-slate-300 rounded-sm p-0.5;
+}

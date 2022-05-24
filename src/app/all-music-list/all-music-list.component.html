@@ -1,9 +1,8 @@
 <div class="container flex flex-col">
-  <button type="button" id="dir-button" (click)="openFileDialog()">Open</button>
   <div class="song-list-container">
     <!-- Lista -->
-    <div *ngFor="let val of response" class="song-tile">
-      <button type="button" (click)="tmpPlayAudio(val.fullpath)">
+    <div *ngFor="let val of songlist" class="song-tile">
+      <button type="button" (click)="openAudioFile(val.fullpath)">
         <!-- Tile principal -->
         <div class="song-tile-in">
           <!-- Cover -->

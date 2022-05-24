@@ -1,0 +1,11 @@
+div.main {
+  @apply flex flex-row min-w-full;
+}
+
+div.right-side {
+  @apply grow;
+}
+
+div.bottom-controls {
+  @apply h-12;
+}

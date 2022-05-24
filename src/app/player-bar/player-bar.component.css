@@ -19,5 +19,5 @@ input.volumebar[type="range"] {
 }
 
 div.controls-container {
-  @apply fixed bottom-0 w-full m-1 p-1 bg-slate-200 items-center content-center text-center;
+  @apply fixed bottom-0 w-full p-1 bg-slate-200 items-center content-center text-center;
 }

@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 export class AudioService {
   audio: HTMLAudioElement | null = null;
   playing: boolean = false;
+  volume: number = 1;
   // intervalPlayer: any;
 
   constructor() {}
@@ -12,11 +13,13 @@ export class AudioService {
     if (this.playing) {
       this.playing = false;
     }
-    if (!this.audio) this.audio = new Audio(path);
-    else {
+    if (!this.audio) {
+      this.audio = new Audio(path);
+    } else {
       this.audio.pause();
       this.audio = new Audio(path);
     }
+    this.audio.volume = this.volume;
   }
 
   playAudio(): void {
@@ -45,6 +48,7 @@ export class AudioService {
 
   changeVolume(volume: number): void {
     if (this.audio) this.audio.volume = volume / 100;
+    this.volume = volume / 100;
   }
 
   changeAudioTime(time: number): void {
