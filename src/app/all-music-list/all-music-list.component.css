@@ -14,9 +14,18 @@ div.song-tile-in {
   @apply flex flex-row bg-slate-300 p-1 m-1 rounded-md items-center;
 }
 
+div.song-tile-in:hover {
+  @apply bg-slate-400;
+}
+
+div.song-tile-in:active {
+  @apply bg-slate-500;
+}
+
+
 /* TODO: Square img only */
 div.song-cover img {
-  @apply w-12 rounded-md;
+  @apply flex flex-row w-12 rounded-md;
 }
 
 div.song-info {

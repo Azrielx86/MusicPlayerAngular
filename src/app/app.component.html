@@ -5,10 +5,11 @@
 
   <div class="right-side">
     <div>
-      <app-all-music-list></app-all-music-list>
+      <app-all-music-list (selection)="changeCurrent($event)"></app-all-music-list>
+      <!-- <router-outlet (selection)="changeCurrent($event)"></router-outlet> -->
     </div>
   </div>
 </div>
 <div class="bottom-controls">
-  <app-player-bar></app-player-bar>
+  <app-player-bar [current]="currentSong"></app-player-bar>
 </div>

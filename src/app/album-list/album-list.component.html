@@ -1,1 +1,29 @@
-<p>album-list works!</p>
+<div class="container flex flex-col overflow-y-scroll overflow-hidden max-h-min">
+    <h1>Albums</h1>
+    <div class="song-list-container">
+      <!-- Lista -->
+      <div *ngFor="let val of songlist; let idx = index" class="song-tile">
+        <button type="button" (click)="openAudioFile(val.fullpath)">
+          <!-- Tile principal -->
+          <div class="song-tile-in">
+            <!-- Cover -->
+            <div class="song-cover">
+              <p>{{ idx }}</p>
+              <img [src]="val.coverURL" alt="album" />
+            </div>
+            <!-- info -->
+            <div class="song-info">
+              <div>
+                <p class="song-title">{{ val.meta.common.title }}</p>
+                <p class="song-artist">{{ val.meta.common.artist }}</p>
+              </div>
+              <div>
+                <p>{{ val.meta.format.duration * 1000 | date: "mm:ss" }}</p>
+              </div>
+            </div>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+  

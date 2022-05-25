@@ -1,19 +1,32 @@
 <div class="controls-container">
-  <div class="button-container">
-    <button>Prev</button>
-    <button (click)="playPauseAudio()">Play</button>
-    <button>Next</button>
+  <div class="info-container">
+    <div class="info-container-img">
+      <img [src]="current.coverURL" alt="album" *ngIf="current !== undefined" />
+    </div>
+    <div class="info-container-in">
+      <p *ngIf="current !== undefined">{{ current.meta.common.title }}</p>
+      <p *ngIf="current !== undefined">{{ current.meta.common.artist }}</p>
+    </div>
   </div>
-  <div class="controls-sub">
-    <input
-      type="range"
-      class="progressbar"
-      id="progress-bar"
-      title="Progress Bar"
-      step="0.1"
-      [(ngModel)]="progressBar"
-      (input)="changeAudioTime()"
-    />
+  <div class="controls-container-sub">
+    <div class="button-container">
+      <button>Prev</button>
+      <button (click)="playPauseAudio()">Play</button>
+      <button>Next</button>
+    </div>
+    <div class="controls-sub">
+      <input
+        type="range"
+        class="progressbar"
+        id="progress-bar"
+        title="Progress Bar"
+        step="0.1"
+        [(ngModel)]="progressBar"
+        (input)="changeAudioTime()"
+      />
+    </div>
+  </div>
+  <div class="volume-container">
     <input
       type="range"
       id="volume-bar"

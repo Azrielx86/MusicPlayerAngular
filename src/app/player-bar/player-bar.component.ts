@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { AudioService } from '../AudioService.service';
 
 @Component({
@@ -12,13 +12,15 @@ export class PlayerBarComponent implements OnInit, OnDestroy {
   volume: number = 100;
   updateEventsInterval: any;
 
+  @Input()
+  current: any;
+
   constructor(private audioService: AudioService) {}
 
   ngOnInit(): void {
     this.updateEventsInterval = setInterval(() => {
       this.updateEvents();
-      // console.log(this.progressBar);
-    }, 100);
+    }, 1000);
   }
 
   ngOnDestroy(): void {
@@ -38,8 +40,9 @@ export class PlayerBarComponent implements OnInit, OnDestroy {
   };
 
   updateEvents = () => {
-    if (this.audioService.audio)
+    if (this.audioService.audio) {
       this.progressBar =
         (this.audioService.audio.currentTime * 100) / this.audioService.audio.duration;
+    }
   };
 }

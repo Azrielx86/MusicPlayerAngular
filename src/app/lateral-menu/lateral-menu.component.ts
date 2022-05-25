@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IpcService } from '../ipcRender.service';
 import { SongListService } from '../songlistService.service';
 
@@ -8,7 +9,11 @@ import { SongListService } from '../songlistService.service';
   styleUrls: ['./lateral-menu.component.css'],
 })
 export class LateralMenuComponent implements OnInit {
-  constructor(private ipcService: IpcService, private songListService: SongListService) {}
+  constructor(
+    private ipcService: IpcService,
+    private songListService: SongListService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
@@ -18,5 +23,13 @@ export class LateralMenuComponent implements OnInit {
       this.songListService.addSongs(filesList);
       console.log(this.songListService.songlist);
     });
+  };
+
+  changeToSongList = () => {
+    this.router.navigate(['/song-list']);
+  };
+
+  changeToAlbumList = () => {
+    this.router.navigate(['/album-list']);
   };
 }

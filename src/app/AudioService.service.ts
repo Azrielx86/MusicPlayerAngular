@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
+import { SongListService } from './songlistService.service';
 
 @Injectable()
 export class AudioService {
   audio: HTMLAudioElement | null = null;
+  current: any;
   playing: boolean = false;
   volume: number = 1;
   // intervalPlayer: any;
 
-  constructor() {}
+  constructor(private songlistService: SongListService) {}
 
   openAudio(path: string): void {
     if (this.playing) {
@@ -19,6 +21,7 @@ export class AudioService {
       this.audio.pause();
       this.audio = new Audio(path);
     }
+    this.current = this.songlistService.getMetaSong(path);
     this.audio.volume = this.volume;
   }
 
