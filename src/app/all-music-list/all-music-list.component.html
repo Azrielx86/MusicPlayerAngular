@@ -1,4 +1,4 @@
-<div class="container flex flex-col overflow-y-scroll overflow-hidden max-h-min">
+<div class="main-container">
   <div class="song-list-container">
     <!-- Lista -->
     <div *ngFor="let val of songlist; let idx = index" class="song-tile">
@@ -7,8 +7,8 @@
         <div class="song-tile-in">
           <!-- Cover -->
           <div class="song-cover">
-            <p>{{ idx }}</p>
-            <img [src]="val.coverURL" alt="album" />
+            <p>{{ idx + 1 }}</p>
+            <img [src]="val.coverURL" alt="" />
           </div>
           <!-- info -->
           <div class="song-info">

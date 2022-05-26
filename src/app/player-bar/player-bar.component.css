@@ -1,9 +1,9 @@
 div.controls-container {
-  @apply flex flex-row fixed bottom-0 w-full p-1 bg-slate-200;
+  @apply flex flex-row fixed bottom-0 w-full p-1 bg-stone-800 text-gray-200 justify-between;
 }
 
 div.controls-container-sub {
-  @apply flex flex-col items-center content-center self-center text-center w-full px-6;
+  @apply flex flex-col items-center content-center self-center text-center w-full px-6 max-w-xl;
 }
 
 div.button-container {
@@ -15,11 +15,11 @@ div.controls-sub {
 }
 
 input.progressbar[type="range"] {
-  @apply w-full;
+  @apply w-full cursor-pointer rounded-lg ;
 }
 
 div.volume-container {
-  @apply flex flex-col text-left content-center self-center;
+  @apply flex flex-col text-left content-center self-center cursor-pointer rounded-lg mx-2;
 }
 
 input.volumebar[type="range"] {
@@ -35,7 +35,7 @@ div.info-container-in {
 }
 
 div.info-container-in > p:first-child {
-  @apply text-xl;
+  @apply text-lg;
 }
 
 div.info-container-in > p:last-child {
@@ -43,5 +43,9 @@ div.info-container-in > p:last-child {
 }
 
 div.info-container-img {
-  @apply self-center items-center content-center  w-16 h-16 m-2;
+  @apply self-center items-center content-center  w-16 min-w-min h-16 m-2;
+}
+
+div.info-container-img > img{
+  @apply rounded-md
 }
