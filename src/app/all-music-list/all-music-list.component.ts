@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AudioService } from '../AudioService.service';
 import { IpcService } from '../ipcRender.service';
+import { Song } from '../song.model';
 import { SongListService } from '../songlistService.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { SongListService } from '../songlistService.service';
   styleUrls: ['./all-music-list.component.css'],
 })
 export class AllMusicListComponent implements OnInit {
-  songlist: any[] = [];
+  songlist: Song[] = [];
   path: string = '';
 
   @Output()

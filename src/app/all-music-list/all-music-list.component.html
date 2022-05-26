@@ -13,11 +13,11 @@
           <!-- info -->
           <div class="song-info">
             <div>
-              <p class="song-title">{{ val.meta.common.title }}</p>
-              <p class="song-artist">{{ val.meta.common.artist }}</p>
+              <p class="song-title">{{ val.title }}</p>
+              <p class="song-artist">{{ val.artist.join(", ") }}</p>
             </div>
             <div>
-              <p>{{ val.meta.format.duration * 1000 | date: "mm:ss" }}</p>
+              <p>{{ val.duration * 1000 | date: "mm:ss" }}</p>
             </div>
           </div>
         </div>

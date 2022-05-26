@@ -4,5 +4,5 @@
 @tailwind utilities;
 
 html, body {
-    @apply max-h-full
+    @apply max-h-full bg-stone-900
 }

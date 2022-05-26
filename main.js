@@ -51,10 +51,6 @@ const getAllFiles = (path) => {
     }
   }
 
-  for (const [i, value] of filesArray.entries()) {
-    value.index = i;
-  }
-
   return filesArray;
 };
 
@@ -80,10 +76,8 @@ ipcMain.on("open-file-dialog-for-file", async (event) => {
   for (const value of filesArray) {
     await mm.parseFile(value.fullpath).then((meta) => {
       value.meta = meta;
-      if (value.meta.common.title === undefined) value.meta.common.title = value.name;
       value.cover = mm.selectCover(meta.common.picture);
-      if (value.cover)
-        value.coverURL = `data:${value.cover.format};base64,${value.cover.data.toString("base64")}`;
+      if (value.cover) value.coverURL = `data:${value.cover.format};base64,${value.cover.data.toString("base64")}`;
       else value.coverURL = " ";
     });
   }
