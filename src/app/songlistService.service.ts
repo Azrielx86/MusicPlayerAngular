@@ -1,5 +1,4 @@
-import { ChangeDetectorRef, Injectable } from '@angular/core';
-import { IpcService } from './ipcRender.service';
+import { Injectable } from '@angular/core';
 import { Song } from './song.model';
 
 @Injectable()
@@ -8,13 +7,15 @@ export class SongListService {
 
   constructor() {}
 
-  addSongs = (songlist: any[]) => {
-    songlist.forEach((element) => {
-      this.songlist.push(new Song(element.name, element.meta, element.fullpath, element.coverURL));
+  addSongs = (songlist: any[]): void => {
+    songlist.forEach((song) => {
+      if (!this.songlist.some((s) => s.name === song.name)) {
+        this.songlist.push(new Song(song.name, song.meta, song.fullpath, song.coverURL));
+      }
     });
   };
 
-  getMetaSong = (path: string) => {
+  getMetaSong = (path: string): any | undefined => {
     for (const value of this.songlist) {
       if (value.fullpath === path) {
         return value;
@@ -23,7 +24,19 @@ export class SongListService {
     return undefined;
   };
 
-  sortedByAlbum = () => {
+  sortedByAlbum = (): Song[] => {
     return this.songlist.sort((a, b) => a.album.localeCompare(b.album));
+  };
+
+  sortedByArtist = (): Song[] => {
+    return this.songlist.sort((a, b) => a.artist.join(',').localeCompare(b.artist.join(',')));
+  };
+
+  sortedByTitle = (): Song[] => {
+    return this.songlist.sort((a, b) => a.title.localeCompare(b.title));
+  };
+
+  getFromAlbum = (album: string): Song[] => {
+    return this.songlist.filter((song) => song.album === album);
   };
 }

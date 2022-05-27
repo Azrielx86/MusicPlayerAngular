@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AudioService } from '../AudioService.service';
+import { Song } from '../song.model';
 import { SongListService } from '../songlistService.service';
 
 @Component({
@@ -8,19 +9,21 @@ import { SongListService } from '../songlistService.service';
   styleUrls: ['./album-list.component.css'],
 })
 export class AlbumListComponent implements OnInit {
-  songlist: any[] = [];
+  songlist: Song[] = [];
   path: string = '';
+
+  @Output()
+  selection = new EventEmitter<any>();
 
   constructor(private audioService: AudioService, private songListService: SongListService) {}
 
   ngOnInit(): void {
-    console.log('Album page');
-
-    this.songlist = this.songListService.sortedByAlbum();
+    this.songlist = this.songListService.songlist;
   }
 
   openAudioFile = (path: string) => {
     this.audioService.openAudio(path);
+    this.selection.emit(this.songListService.getMetaSong(path));
     this.audioService.playAudio();
   };
 }

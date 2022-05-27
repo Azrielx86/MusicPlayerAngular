@@ -1,6 +1,5 @@
-import { ChangeDetectorRef, Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AudioService } from '../AudioService.service';
-import { IpcService } from '../ipcRender.service';
 import { Song } from '../song.model';
 import { SongListService } from '../songlistService.service';
 
