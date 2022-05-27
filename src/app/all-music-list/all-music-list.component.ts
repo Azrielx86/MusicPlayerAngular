@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AudioService } from '../AudioService.service';
 import { Song } from '../song.model';
 import { SongListService } from '../songlistService.service';
@@ -11,19 +11,18 @@ import { SongListService } from '../songlistService.service';
 export class AllMusicListComponent implements OnInit {
   songlist: Song[] = [];
   path: string = '';
-
-  @Output()
-  selection = new EventEmitter<any>();
+  data: any;
 
   constructor(private audioService: AudioService, private songListService: SongListService) {}
 
   ngOnInit(): void {
+    this.audioService.data$.subscribe((res) => (this.data = res));
     this.songlist = this.songListService.songlist;
   }
 
-  openAudioFile = (path: string) => {
+  openAudioFile = (path: string, song: Song) => {
     this.audioService.openAudio(path);
-    this.selection.emit(this.songListService.getMetaSong(path));
+    this.audioService.changeData(song);
     this.audioService.playAudio();
   };
 }

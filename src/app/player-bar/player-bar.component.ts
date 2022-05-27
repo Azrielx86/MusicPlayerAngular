@@ -1,5 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { AudioService } from '../AudioService.service';
+import { Song } from '../song.model';
 
 @Component({
   selector: 'app-player-bar',
@@ -11,16 +12,15 @@ export class PlayerBarComponent implements OnInit, OnDestroy {
   // TODO: get from save file
   volume: number = 100;
   updateEventsInterval: any;
-
-  @Input()
-  current: any;
+  data: Song | undefined;
 
   constructor(private audioService: AudioService) {}
 
   ngOnInit(): void {
+    this.audioService.data$.subscribe(res => this.data = res);
     this.updateEventsInterval = setInterval(() => {
       this.updateEvents();
-    }, 1000);
+    }, 100);
   }
 
   ngOnDestroy(): void {

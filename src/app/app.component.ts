@@ -1,4 +1,5 @@
 import { ChangeDetectorRef, Component, Input, Output } from '@angular/core';
+import { Event } from '@angular/router';
 import { AudioService } from './AudioService.service';
 import { IpcService } from './ipcRender.service';
 
@@ -13,7 +14,7 @@ export class AppComponent {
 
   changeCurrent = (song: any) => {
     console.log(song);
-    
+
     this.currentSong = song;
   };
 }

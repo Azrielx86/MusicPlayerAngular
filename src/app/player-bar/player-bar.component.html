@@ -1,11 +1,11 @@
 <div class="controls-container">
   <div class="info-container">
     <div class="info-container-img">
-      <img [src]="current.coverURL" alt="album" *ngIf="current !== undefined" />
+      <img [src]="data.coverURL" alt="album" *ngIf="data !== undefined" />
     </div>
     <div class="info-container-in">
-      <p *ngIf="current !== undefined">{{ current.meta.common.title }}</p>
-      <p *ngIf="current !== undefined">{{ current.meta.common.artist }}</p>
+      <p *ngIf="data !== undefined">{{ data.title }}</p>
+      <p *ngIf="data !== undefined">{{ data.artist }}</p>
     </div>
   </div>
   <div class="controls-container-sub">

@@ -1,37 +1,56 @@
-div.song-list-container {
-    @apply flex flex-col;
-  }
-  
-  div.song-tile {
-    @apply w-full;
-  }
-  
-  div.song-tile button {
-    @apply w-full;
-  }
-  
-  div.song-tile-in {
-    @apply flex flex-row bg-slate-300 p-1 m-1 rounded-md items-center;
-  }
-  
-  /* TODO: Square img only */
-  div.song-cover img {
-    @apply flex flex-row w-12 rounded-md;
-  }
-  
-  div.song-info {
-    @apply flex flex-row basis-full p-2;
-  }
-  
-  div.song-info div:first-child {
-    @apply grow text-left;
-  }
-  
-  p.song-title {
-    @apply text-lg font-bold;
-  }
-  
-  p.song-artist {
-    @apply text-base;
-  }
-  
+div.main-container {
+  @apply flex flex-col overflow-y-scroll overflow-hidden max-h-screen;
+}
+
+div.album-list-container {
+  @apply flex flex-wrap;
+}
+
+div.album-tile {
+  @apply flex flex-col items-center justify-center;
+}
+
+div.album-tile button {
+  @apply w-72;
+}
+
+div.album-tile-in {
+  @apply flex flex-row bg-stone-700 p-1 m-1 rounded-md items-center text-gray-200;
+}
+
+div.album-tile-in:hover {
+  @apply bg-stone-600;
+}
+
+div.album-tile-in:active {
+  @apply bg-stone-800;
+}
+
+/* TODO: Square img only */
+div.album-cover img {
+  @apply w-12 h-12 rounded-md;
+}
+
+div.album-cover p {
+  @apply m-3 text-lg;
+}
+
+div.album-cover {
+  @apply flex flex-row self-center items-center;
+}
+
+div.album-info {
+  @apply flex flex-row basis-full p-2 mx-2;
+}
+
+div.album-info div:first-child {
+  @apply grow text-left;
+}
+
+p.album-title {
+  @apply text-lg font-bold;
+}
+
+p.album-artist {
+  @apply text-base;
+}

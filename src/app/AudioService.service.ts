@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { Song } from './song.model';
 import { SongListService } from './songlistService.service';
 
 @Injectable()
@@ -7,9 +9,15 @@ export class AudioService {
   current: any;
   playing: boolean = false;
   volume: number = 1;
-  // intervalPlayer: any;
+
+  private data = new BehaviorSubject<Song>(new Song('', undefined, '', ''));
+  data$ = this.data.asObservable();
 
   constructor(private songlistService: SongListService) {}
+
+  changeData = (data: Song) => {
+    this.data.next(data);
+  };
 
   openAudio(path: string): void {
     if (this.playing) {

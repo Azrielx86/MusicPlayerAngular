@@ -2,7 +2,7 @@
   <div class="song-list-container">
     <!-- Lista -->
     <div *ngFor="let val of songlist; let idx = index" class="song-tile">
-      <button type="button" (click)="openAudioFile(val.fullpath)">
+      <button type="button" (click)="openAudioFile(val.fullpath, val)">
         <!-- Tile principal -->
         <div class="song-tile-in">
           <!-- Cover -->
@@ -14,7 +14,7 @@
           <div class="song-info">
             <div>
               <p class="song-title">{{ val.title }}</p>
-              <p class="song-artist">{{ val.artist.join(", ") }}</p>
+              <p class="song-artist">{{ val.album }} - {{ val.artist.join(", ") }}</p>
             </div>
             <div>
               <p>{{ val.duration * 1000 | date: "mm:ss" }}</p>
