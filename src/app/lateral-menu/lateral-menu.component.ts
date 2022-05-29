@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IpcService } from '../ipcRender.service';
-import { SongListService } from '../songlistService.service';
+import { IpcService } from '../services/ipcRender.service';
+import { SongListService } from '../services/songlistService.service';
 
 @Component({
   selector: 'app-lateral-menu',

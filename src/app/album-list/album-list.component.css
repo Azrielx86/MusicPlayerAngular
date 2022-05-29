@@ -1,5 +1,5 @@
 div.main-container {
-  @apply flex flex-col overflow-y-scroll overflow-hidden max-h-screen;
+  @apply flex flex-col;
 }
 
 div.album-list-container {
@@ -11,11 +11,11 @@ div.album-tile {
 }
 
 div.album-tile button {
-  @apply w-72;
+  @apply w-full h-full;
 }
 
 div.album-tile-in {
-  @apply flex flex-row bg-stone-700 p-1 m-1 rounded-md items-center text-gray-200;
+  @apply flex flex-col bg-stone-700 p-4 m-1 rounded-md items-center text-gray-200 w-48 h-60 min-w-min;
 }
 
 div.album-tile-in:hover {
@@ -28,11 +28,11 @@ div.album-tile-in:active {
 
 /* TODO: Square img only */
 div.album-cover img {
-  @apply w-12 h-12 rounded-md;
+  @apply w-40 h-40 rounded-md;
 }
 
 div.album-cover p {
-  @apply m-3 text-lg;
+  @apply text-lg;
 }
 
 div.album-cover {
@@ -40,7 +40,7 @@ div.album-cover {
 }
 
 div.album-info {
-  @apply flex flex-row basis-full p-2 mx-2;
+  @apply flex flex-row basis-full p-2;
 }
 
 div.album-info div:first-child {
@@ -48,9 +48,9 @@ div.album-info div:first-child {
 }
 
 p.album-title {
-  @apply text-lg font-bold;
+  @apply text-lg max-h-6 font-bold text-ellipsis overflow-hidden;
 }
 
 p.album-artist {
-  @apply text-base;
+  @apply text-xs overflow-hidden text-ellipsis;
 }

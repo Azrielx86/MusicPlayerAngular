@@ -3,9 +3,5 @@ div.main {
 }
 
 div.right-side {
-  @apply grow;
-}
-
-div.bottom-controls {
-  @apply h-12;
+  @apply grow overflow-y-scroll block max-h-screen pb-24;
 }

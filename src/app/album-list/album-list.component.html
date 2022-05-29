@@ -2,13 +2,15 @@
   <h1 class="text-white">Album List</h1>
   <div class="album-list-container">
     <!-- Lista -->
-    <div *ngFor="let val of albumlist; let idx = index" class="album-tile">
+    <p *ngIf="albumlist.length < 0">Loading...</p>
+    <div *ngFor="let val of albumlist; let idx = index;"  class="album-tile">
       <button type="button">
         <div class="album-tile-in">
           <div class="album-cover">
             <img [src]="val.coverURL" alt="" />
           </div>
-          <p>{{ val.name }}</p>
+          <p class="album-title">{{ val.name }}</p>
+          <p class="album-artist">{{ val.artist }}</p>
         </div>
       </button>
     </div>

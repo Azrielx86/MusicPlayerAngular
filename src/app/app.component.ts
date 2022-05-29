@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, Input, Output } from '@angular/core';
 import { Event } from '@angular/router';
-import { AudioService } from './AudioService.service';
-import { IpcService } from './ipcRender.service';
+import { AudioService } from './services/AudioService.service';
+import { IpcService } from './services/ipcRender.service';
 
 @Component({
   selector: 'app-root',

@@ -1,5 +1,5 @@
 div.main-container {
-  @apply flex flex-col overflow-y-scroll overflow-hidden max-h-screen;
+  @apply flex flex-col;
 }
 
 div.song-list-container {

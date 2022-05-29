@@ -1,7 +1,7 @@
 <div class="main-container">
   <div class="song-list-container">
     <!-- Lista -->
-    <div *ngFor="let val of songlist; let idx = index" class="song-tile">
+    <div *ngFor="let val of songlist; let idx = index;" class="song-tile">
       <button type="button" (click)="openAudioFile(val.fullpath, val)">
         <!-- Tile principal -->
         <div class="song-tile-in">

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Song } from './song.model';
+import { Song } from '../models/song.model';
 import { SongListService } from './songlistService.service';
 
 @Injectable()

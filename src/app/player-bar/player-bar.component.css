@@ -15,7 +15,7 @@ div.controls-sub {
 }
 
 input.progressbar[type="range"] {
-  @apply w-full cursor-pointer rounded-lg ;
+  @apply w-full cursor-pointer rounded-lg;
 }
 
 div.volume-container {
@@ -46,6 +46,6 @@ div.info-container-img {
   @apply self-center items-center content-center  w-16 min-w-min h-16 m-2;
 }
 
-div.info-container-img > img{
-  @apply rounded-md
+div.info-container-img > img {
+  @apply rounded-md;
 }

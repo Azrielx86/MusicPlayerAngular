@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AudioService } from '../AudioService.service';
-import { Song } from '../song.model';
-import { SongListService } from '../songlistService.service';
+import { AudioService } from '../services/AudioService.service';
+import { Song } from '../models/song.model';
+import { SongListService } from '../services/songlistService.service';
 
 @Component({
   selector: 'app-all-music-list',
@@ -13,11 +13,12 @@ export class AllMusicListComponent implements OnInit {
   path: string = '';
   data: any;
 
-  constructor(private audioService: AudioService, private songListService: SongListService) {}
+  constructor(private audioService: AudioService, private songListService: SongListService) {
+    this.songlist = this.songListService.songlist;
+  }
 
   ngOnInit(): void {
     this.audioService.data$.subscribe((res) => (this.data = res));
-    this.songlist = this.songListService.songlist;
   }
 
   openAudioFile = (path: string, song: Song) => {

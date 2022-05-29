@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { AudioService } from '../AudioService.service';
-import { Song } from '../song.model';
+import { AudioService } from '../services/AudioService.service';
+import { Song } from '../models/song.model';
 
 @Component({
   selector: 'app-player-bar',
