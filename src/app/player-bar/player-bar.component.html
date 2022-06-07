@@ -1,7 +1,7 @@
 <div class="controls-container">
   <div class="info-container">
     <div class="info-container-img">
-      <img [src]="data.coverURL" alt="album" *ngIf="data !== undefined" />
+      <img [src]="data.coverBytes" alt="album" *ngIf="data !== undefined" />
     </div>
     <div class="info-container-in">
       <p *ngIf="data !== undefined">{{ data.title }}</p>

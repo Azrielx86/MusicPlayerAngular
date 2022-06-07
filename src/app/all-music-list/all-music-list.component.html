@@ -5,10 +5,10 @@
       <button type="button" (click)="openAudioFile(val.fullpath, val)">
         <!-- Tile principal -->
         <div class="song-tile-in">
+          <p class="index">{{ idx + 1 }}</p>
           <!-- Cover -->
           <div class="song-cover">
-            <p>{{ idx + 1 }}</p>
-            <img [src]="val.coverURL" alt="" />
+            <img [src]="val.albumObject?.coverBytes" alt="" />
           </div>
           <!-- info -->
           <div class="song-info">

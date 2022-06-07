@@ -98,10 +98,15 @@ export class SongListService {
 
     this.songlist.forEach((song) => {
       if (!albumList.some((album) => album.name === song.album)) {
-        albumList.push(new Album(song.album, song.artist.join(', '), [song], song.coverURL));
+        const newAlbum = new Album(song.album, song.artist.join(', '), [song], song.coverBytes);
+        albumList.push(newAlbum);
+        song.albumObject = newAlbum;
+        song.coverBytes = '';
       } else {
         const index = albumList.findIndex((album) => album.name === song.album);
         albumList[index].songs.push(song);
+        song.albumObject = albumList[index];
+        song.coverBytes = '';
       }
     });
 

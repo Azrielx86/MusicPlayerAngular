@@ -9,7 +9,7 @@ createWindow = () => {
     width: 1200,
     height: 600,
     title: "Angular and Electron",
-    resizable: false,
+    resizable: true,
     webPreferences: {
       contextIsolation: false,
       nodeIntegration: true,
@@ -67,19 +67,32 @@ ipcMain.on("message", (event) => {
 });
 
 ipcMain.on("open-file-dialog-for-file", async (event) => {
-  let dir = await dialog.showOpenDialog({
-    properties: ["openDirectory"],
-  });
+  let dir = await dialog
+    .showOpenDialog({
+      properties: ["openDirectory"],
+    })
+    .catch();
+
+  if (dir.canceled) return;
 
   const filesArray = getAllFiles(dir["filePaths"][0]);
 
   for (const value of filesArray) {
-    await mm.parseFile(value.fullpath).then((meta) => {
-      value.meta = meta;
-      value.cover = mm.selectCover(meta.common.picture);
-      if (value.cover) value.coverURL = `data:${value.cover.format};base64,${value.cover.data.toString("base64")}`;
-      else value.coverURL = " ";
-    });
+    await mm
+      .parseFile(value.fullpath)
+      .then((meta) => {
+        value.meta = meta;
+        value.cover = mm.selectCover(meta.common.picture);
+        if (value.cover)
+          value.coverURL = `data:${value.cover.format};base64,${value.cover.data.toString(
+            "base64"
+          )}`;
+        else {
+          value.coverURL = " ";
+          value.cover = null;
+        }
+      })
+      .catch((error) => console.error(error));
   }
 
   if (dir) event.reply("selected-file", filesArray);

@@ -1,10 +1,13 @@
+import { Album } from "./album.model";
+
 export class Song {
   public title: string = '';
   public album: string = '';
   public artist: string[] = [];
   public duration: number = 0;
+  public albumObject: Album | undefined;
 
-  constructor(public name: string, public meta: any | undefined, public fullpath: string, public coverURL: string) {
+  constructor(public name: string, public meta: any | undefined, public fullpath: string, public coverBytes: string) {
     if (this.meta === undefined || this.meta === '') return;
 
     if (this.meta.common.title === undefined) this.title = this.name;
@@ -17,5 +20,7 @@ export class Song {
     else this.artist = this.meta.common.artist.split(',');
 
     this.duration = this.meta.format.duration;
+
+    this.meta = undefined;
   }
 }
